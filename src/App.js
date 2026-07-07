@@ -16,6 +16,17 @@ function App() {
           Lumen helps you find the <br />
           <span>right credit card</span> for your life
         </Title>
+
+        <Description>
+          Whether you’re a student getting your first card, quietly building
+          credit, or running a business — Lumen sorts through the noise and
+          matches you with cards that actually earn their keep.
+        </Description>
+
+        <ActionItems>
+          <JoinWaitListButton>Join the Waitlist</JoinWaitListButton>
+          <SeeCards>See the Cards</SeeCards>
+        </ActionItems>
       </Section>
       <Main></Main>
     </div>
@@ -91,7 +102,6 @@ const Main = styled.main`
 const Section = styled.section`
   position: relative;
   z-index: 10;
-  padding-top: 6rem;
   max-width: 60rem;
   text-align: center;
   margin: 0 auto;
@@ -130,4 +140,73 @@ const Title = styled.h1`
 
     padding: 0 0.1em;
   }
+`;
+
+const Description = styled.p`
+  margin: 2rem auto 0 auto;
+  max-width: 36rem;
+  font-size: 1rem;
+  line-height: 1.625;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+`;
+
+const ActionItems = styled.div`
+  display: flex;
+  margin-top: 2.5rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
+`;
+
+const JoinWaitListButton = styled.a`
+  display: inline-flex;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  gap: 0.5rem;
+  align-items: center;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  transition-property:
+    background-color, border-color, color, fill, stroke, opacity, box-shadow,
+    transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  background-color: black;
+  color: white;
+`;
+
+const SeeCards = styled.a`
+  display: inline-flex;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  gap: 0.5rem;
+  align-items: center;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  transition-property:
+    background-color, border-color, color, fill, stroke, opacity, box-shadow,
+    transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  background-color: white;
+  color: black;
+  border: 1px solid #bebebe;
 `;
