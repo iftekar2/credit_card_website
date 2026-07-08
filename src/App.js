@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import studentIcon from "./image/icons8-student-50.png";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
           <WaitList>Join Waitlist</WaitList>
         </Nav>
       </Header>
-      <Section>
+      <MainSection>
         <Title>
           Lumen helps you find the <br />
           <span>right credit card</span> for your life
@@ -27,8 +28,34 @@ function App() {
           <JoinWaitListButton>Join the Waitlist</JoinWaitListButton>
           <SeeCards>See the Cards</SeeCards>
         </ActionItems>
-      </Section>
-      <Main></Main>
+
+        <ListingNumberOfUsers>
+          Building your card matcher · 2,400+ on the list
+        </ListingNumberOfUsers>
+      </MainSection>
+
+      <BenefitSection>
+        <BenefitCards>
+          <CardForStudent>
+            <CardTitle>
+              <img src={studentIcon} alt="student" />
+              <span>for students</span>
+            </CardTitle>
+            <CardText>No Annual Fee</CardText>
+            <CardDescription>Earn while you build history.</CardDescription>
+          </CardForStudent>
+
+          <CardForCreditBuilder>
+            <CardTitle>
+              <img src={studentIcon} alt="student" />
+              <span>for students</span>
+            </CardTitle>
+
+            <CardText>No Annual Fee</CardText>
+            <CardDescription>Earn while you build history.</CardDescription>
+          </CardForCreditBuilder>
+        </BenefitCards>
+      </BenefitSection>
     </div>
   );
 }
@@ -85,21 +112,7 @@ const Cards = styled.a``;
 
 const WaitList = styled.a``;
 
-const Main = styled.main`
-  position: relative;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 2rem;
-  padding-bottom: 6rem;
-  max-width: 80rem;
-
-  @media (min-width: 768px) {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-`;
-
-const Section = styled.section`
+const MainSection = styled.section`
   position: relative;
   z-index: 10;
   max-width: 60rem;
@@ -209,4 +222,88 @@ const SeeCards = styled.a`
   background-color: white;
   color: black;
   border: 1px solid #bebebe;
+`;
+
+const ListingNumberOfUsers = styled.p`
+  margin-top: 1.5rem;
+  font-family:
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+`;
+
+const BenefitSection = styled.section`
+  position: relative;
+  margin-top: 6rem;
+
+  @media (min-width: 768px) {
+    margin-top: 8rem;
+  }
+`;
+
+const BenefitCards = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: flex-end;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+`;
+
+const CardForStudent = styled.div`
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border-width: 1px;
+  background-color: #bdf0cd;
+`;
+
+const CardForCreditBuilder = styled.div`
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border-width: 1px;
+  background-color: #ffbd9a;
+`;
+
+const CardTitle = styled.div`
+  display: inline-flex;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  gap: 0.5rem;
+  align-items: center;
+  border-radius: 9999px;
+  border-width: 1px;
+  background-color: white;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  span {
+    font-family:
+      Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+`;
+
+const CardText = styled.p`
+  margin-top: 0.75rem;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  line-height: 1.25;
+`;
+
+const CardDescription = styled.p`
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
 `;
