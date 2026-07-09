@@ -8,18 +8,18 @@ function App() {
   return (
     <div className="App">
       <Header className="App-header">
-        <Logo>Lumen</Logo>
+        <Logo>Swiply</Logo>
       </Header>
 
       <MainSection>
         <Title>
-          Lumen helps you find the <br />
+          Swiply helps you find the <br />
           <span>right credit card</span> for your life
         </Title>
 
         <Description>
           Whether you’re a student getting your first card, quietly building
-          credit, or running a business — Lumen sorts through the noise and
+          credit, or running a business — Swiply sorts through the noise and
           matches you with cards that actually earn their keep.
         </Description>
 
@@ -122,7 +122,7 @@ const MainSection = styled.section`
   margin: 0 auto;
 
   @media (min-width: 768px) {
-    padding-top: 4rem;
+    padding-top: 1.8rem;
   }
 `;
 
@@ -133,6 +133,11 @@ const Title = styled.h1`
   line-height: 1.15;
   letter-spacing: -0.03em;
   color: #111111;
+  text-wrap: pretty;
+  font-size: 2.3rem;
+  margin-left: 16px;
+  margin-right: 16px;
+  padding-top: 1.5rem;
 
   @media (min-width: 768px) {
     font-size: 4.5rem;
