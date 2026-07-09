@@ -84,6 +84,10 @@ function App() {
       <SwiplyCollectionSection>
         <SwiplyDescriptionSection>
           <SwiplyTag>The Swiply Collection</SwiplyTag>
+
+          <SwiplyCollectionSectionTitle>
+            Every category, one <span>honest</span> comparison.
+          </SwiplyCollectionSectionTitle>
         </SwiplyDescriptionSection>
       </SwiplyCollectionSection>
     </div>
@@ -375,25 +379,32 @@ const NoFee = styled.span`
 const SwiplyCollectionSection = styled.section`
   margin-top: 8rem;
   scroll-margin-top: 6rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1184px;
+  max-width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
 const SwiplyDescriptionSection = styled.div`
-  max-width: 48rem;
+  width: 768px;
+  max-width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const SwiplyTag = styled.div`
   display: inline-flex;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding: 0.25rem 0.75rem;
   margin-bottom: 1rem;
   gap: 0.5rem;
   align-items: center;
+  justify-content: center;
   border-radius: 9999px;
   font-family:
     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -404,4 +415,32 @@ const SwiplyTag = styled.div`
   border: 1px solid #d7d0c7;
   color: #5b534f;
   height: 15px;
+`;
+
+const SwiplyCollectionSectionTitle = styled.h2`
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1rem;
+  line-height: 1.25;
+  font-weight: 400;
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+
+  span {
+    font-style: italic;
+    font-weight: 300;
+    display: inline-block;
+    white-space: nowrap;
+
+    background: linear-gradient(
+      180deg,
+      transparent 18%,
+      var(--color-highlight, #e2ff44) 18%,
+      var(--color-highlight, #e2ff44) 88%,
+      transparent 88%
+    );
+
+    padding: 0 0.15em;
+  }
 `;
