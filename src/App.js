@@ -7,13 +7,9 @@ function App() {
   return (
     <div className="App">
       <Header className="App-header">
-        <ComingSoon>coming soon</ComingSoon>
         <Logo>Lumen</Logo>
-        <Nav>
-          <Cards>cards</Cards>
-          <WaitList>Join Waitlist</WaitList>
-        </Nav>
       </Header>
+
       <MainSection>
         <Title>
           Lumen helps you find the <br />
@@ -92,39 +88,17 @@ const Header = styled.header`
   }
 `;
 
-const ComingSoon = styled.span`
-  font-size: 0.75rem;
-  font-family:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  color: var(--muted-foreground);
-`;
-
-const Logo = styled.a`
+const Logo = styled.h1`
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.5rem;
   font-weight: 570;
   line-height: 2rem;
   font-style: italic;
   letter-spacing: -0.025em;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
 `;
-
-const Nav = styled.nav`
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-  font-family:
-    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  text-transform: uppercase;
-`;
-
-const Cards = styled.a``;
-
-const WaitList = styled.a``;
 
 const MainSection = styled.section`
   position: relative;
@@ -134,7 +108,7 @@ const MainSection = styled.section`
   margin: 0 auto;
 
   @media (min-width: 768px) {
-    padding-top: 8rem;
+    padding-top: 4rem;
   }
 `;
 
@@ -187,7 +161,7 @@ const Description = styled.p`
 const ActionItems = styled.div`
   display: flex;
   margin-top: 2.5rem;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.75rem;
   justify-content: center;
   align-items: center;
@@ -252,10 +226,10 @@ const ListingNumberOfUsers = styled.p`
 
 const BenefitSection = styled.section`
   position: relative;
-  margin-top: 6rem;
+  margin-top: 4rem;
 
   @media (min-width: 768px) {
-    margin-top: 8rem;
+    margin-top: 4rem;
   }
 `;
 
