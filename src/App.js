@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import studentIcon from "./image/icons8-student-50.png";
+import growthIcon from "./image/icons8-escalator-up-50.png";
+import businessIcon from "./image/icons8-small-business-50.png";
 
 function App() {
   return (
@@ -47,13 +49,25 @@ function App() {
 
           <CardForCreditBuilder>
             <CardTitle>
-              <img src={studentIcon} alt="student" />
-              <span>for students</span>
+              <img src={growthIcon} alt="growth" />
+              <span>Building Credit</span>
             </CardTitle>
 
-            <CardText>No Annual Fee</CardText>
-            <CardDescription>Earn while you build history.</CardDescription>
+            <CardText>0% Intro APR</CardText>
+            <CardDescription>
+              Graduate to unsecured in 6 months.
+            </CardDescription>
           </CardForCreditBuilder>
+
+          <BusinessCard>
+            <CardTitle>
+              <img src={businessIcon} alt="business" />
+              <span>For Business</span>
+            </CardTitle>
+
+            <CardText>Up to 5% back</CardText>
+            <CardDescription>On ads, SaaS, and shipping.</CardDescription>
+          </BusinessCard>
         </BenefitCards>
       </BenefitSection>
     </div>
@@ -156,7 +170,7 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-  margin: 2rem auto 0 auto;
+  margin: 2rem 1rem 0 1rem;
   max-width: 36rem;
   font-size: 1rem;
   line-height: 1.625;
@@ -165,6 +179,8 @@ const Description = styled.p`
   @media (min-width: 768px) {
     font-size: 1.125rem;
     line-height: 1.75rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 
@@ -244,21 +260,23 @@ const BenefitSection = styled.section`
 `;
 
 const BenefitCards = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 2rem;
-  align-items: flex-end;
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    flex-direction: row;
+    align-items: flex-end;
   }
 `;
-
 const CardForStudent = styled.div`
   padding: 1.25rem;
   border-radius: 1rem;
   border-width: 1px;
   background-color: #bdf0cd;
+  width: 15rem;
 `;
 
 const CardForCreditBuilder = styled.div`
@@ -266,6 +284,15 @@ const CardForCreditBuilder = styled.div`
   border-radius: 1rem;
   border-width: 1px;
   background-color: #ffbd9a;
+  width: 15rem;
+`;
+
+const BusinessCard = styled.div`
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border-width: 1px;
+  background-color: #e0d9fd;
+  width: 15rem;
 `;
 
 const CardTitle = styled.div`
