@@ -80,6 +80,12 @@ function App() {
           </NoFee>
         </ValueProps>
       </BenefitSection>
+
+      <SwiplyCollectionSection>
+        <SwiplyDescriptionSection>
+          <SwiplyTag>The Swiply Collection</SwiplyTag>
+        </SwiplyDescriptionSection>
+      </SwiplyCollectionSection>
     </div>
   );
 }
@@ -364,4 +370,38 @@ const NoFee = styled.span`
   display: inline-flex;
   gap: 0.375rem;
   align-items: center;
+`;
+
+const SwiplyCollectionSection = styled.section`
+  margin-top: 8rem;
+  scroll-margin-top: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SwiplyDescriptionSection = styled.div`
+  max-width: 48rem;
+  text-align: center;
+`;
+
+const SwiplyTag = styled.div`
+  display: inline-flex;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+  align-items: center;
+  border-radius: 9999px;
+  font-family:
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background-color: white;
+  font-size: 10px;
+  border: 1px solid #d7d0c7;
+  color: #5b534f;
+  height: 15px;
 `;
