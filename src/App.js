@@ -2,6 +2,7 @@ import styled from "styled-components";
 import studentIcon from "./image/icons8-student-50.png";
 import growthIcon from "./image/icons8-escalator-up-50.png";
 import businessIcon from "./image/icons8-small-business-50.png";
+import checkIcon from "./image/icons8-correct-50.png";
 
 function App() {
   return (
@@ -48,7 +49,6 @@ function App() {
               <img src={growthIcon} alt="growth" />
               <span>Building Credit</span>
             </CardTitle>
-
             <CardText>0% Intro APR</CardText>
             <CardDescription>
               Graduate to unsecured in 6 months.
@@ -60,11 +60,25 @@ function App() {
               <img src={businessIcon} alt="business" />
               <span>For Business</span>
             </CardTitle>
-
             <CardText>Up to 5% back</CardText>
             <CardDescription>On ads, SaaS, and shipping.</CardDescription>
           </BusinessCard>
         </BenefitCards>
+
+        <ValueProps>
+          <NoCreditHit>
+            <img src={checkIcon} alt="check" />
+            No credit hit to browse
+          </NoCreditHit>{" "}
+          ·{" "}
+          <Personalized>
+            <img src={checkIcon} alt="check" /> Personalized in 60s
+          </Personalized>{" "}
+          ·{" "}
+          <NoFee>
+            <img src={checkIcon} alt="check" /> Free forever
+          </NoFee>
+        </ValueProps>
       </BenefitSection>
     </div>
   );
@@ -307,4 +321,42 @@ const CardDescription = styled.p`
   margin-top: 0.25rem;
   font-size: 0.75rem;
   line-height: 1rem;
+`;
+
+const ValueProps = styled.div`
+  display: flex;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  font-family:
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+`;
+
+const NoCreditHit = styled.span`
+  display: inline-flex;
+  gap: 0.375rem;
+  align-items: center;
+`;
+
+const Personalized = styled.span`
+  display: inline-flex;
+  gap: 0.375rem;
+  align-items: center;
+`;
+
+const NoFee = styled.span`
+  display: inline-flex;
+  gap: 0.375rem;
+  align-items: center;
 `;
