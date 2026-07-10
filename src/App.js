@@ -7,33 +7,33 @@ import checkIcon from "./image/icons8-correct-50.png";
 function App() {
   return (
     <div className="App">
-      <Header className="App-header">
+      <SiteHeader className="App-header">
         <Logo>Swiply</Logo>
-      </Header>
+      </SiteHeader>
 
       <MainSection>
-        <Title>
+        <HeroTitle>
           Swiply helps you find the <br />
           <span>right credit card</span> for your life
-        </Title>
+        </HeroTitle>
 
-        <Description>
+        <HeroDescription>
           Whether you’re a student getting your first card, quietly building
           credit, or running a business — Swiply sorts through the noise and
           matches you with cards that actually earn their keep.
-        </Description>
+        </HeroDescription>
 
-        <ActionItems>
-          <JoinWaitListButton>Join the Waitlist</JoinWaitListButton>
-          <SeeCards>See the Cards</SeeCards>
-        </ActionItems>
+        <ButtonGroup>
+          <PrimaryButton>Join the Waitlist</PrimaryButton>
+          <SecondaryButton>See the Cards</SecondaryButton>
+        </ButtonGroup>
 
-        <ListingNumberOfUsers>
+        <SocialProofText>
           Building your card matcher · 2,400+ on the list
-        </ListingNumberOfUsers>
+        </SocialProofText>
       </MainSection>
 
-      <BenefitSection>
+      <FeaturesSection>
         <BenefitCards>
           <CardForStudent>
             <CardTitle>
@@ -65,41 +65,41 @@ function App() {
           </BusinessCard>
         </BenefitCards>
 
-        <ValueProps>
-          <NoCreditHit>
+        <ValuePropsBanner>
+          <ValueItem>
             <img src={checkIcon} alt="check" />
             No credit hit to browse
-          </NoCreditHit>{" "}
+          </ValueItem>{" "}
           ·{" "}
-          <Personalized>
+          <ValueItem>
             <img src={checkIcon} alt="check" /> Personalized in 60s
-          </Personalized>{" "}
+          </ValueItem>{" "}
           ·{" "}
-          <NoFee>
+          <ValueItem>
             <img src={checkIcon} alt="check" /> Free forever
-          </NoFee>
-        </ValueProps>
-      </BenefitSection>
+          </ValueItem>
+        </ValuePropsBanner>
+      </FeaturesSection>
 
-      <SwiplyCollectionSection>
-        <SwiplyDescriptionSection>
-          <SwiplyTag>The Swiply Collection</SwiplyTag>
-          <SwiplyCollectionSectionTitle>
+      <CollectionSection>
+        <SectionHeader>
+          <CategoryTag>The Swiply Collection</CategoryTag>
+          <SectionTitle>
             Every category, one <span>honest</span> comparison.
-          </SwiplyCollectionSectionTitle>
-          <SwiplyCollectionSectionDescription>
+          </SectionTitle>
+          <SectionDescription>
             Click any card to see the details that matter:annual fee, APR, cash
             back categories, and who it’s actually right for.
-          </SwiplyCollectionSectionDescription>
-        </SwiplyDescriptionSection>
-      </SwiplyCollectionSection>
+          </SectionDescription>
+        </SectionHeader>
+      </CollectionSection>
     </div>
   );
 }
 
 export default App;
 
-const Header = styled.header`
+const SiteHeader = styled.header`
   position: relative;
   z-index: 20;
   display: flex;
@@ -139,7 +139,7 @@ const MainSection = styled.section`
   }
 `;
 
-const Title = styled.h1`
+const HeroTitle = styled.h1`
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 400;
   font-size: 3rem;
@@ -175,7 +175,7 @@ const Title = styled.h1`
   }
 `;
 
-const Description = styled.p`
+const HeroDescription = styled.p`
   margin: 2rem 1rem 0 1rem;
   max-width: 36rem;
   font-size: 1rem;
@@ -190,7 +190,7 @@ const Description = styled.p`
   }
 `;
 
-const ActionItems = styled.div`
+const ButtonGroup = styled.div`
   display: flex;
   margin-top: 2.5rem;
   flex-direction: row;
@@ -203,7 +203,7 @@ const ActionItems = styled.div`
   }
 `;
 
-const JoinWaitListButton = styled.a`
+const PrimaryButton = styled.a`
   display: inline-flex;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -224,7 +224,7 @@ const JoinWaitListButton = styled.a`
   color: white;
 `;
 
-const SeeCards = styled.a`
+const SecondaryButton = styled.a`
   display: inline-flex;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -246,7 +246,7 @@ const SeeCards = styled.a`
   border: 1px solid #bebebe;
 `;
 
-const ListingNumberOfUsers = styled.p`
+const SocialProofText = styled.p`
   margin-top: 1.5rem;
   font-family:
     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -256,7 +256,7 @@ const ListingNumberOfUsers = styled.p`
   text-transform: uppercase;
 `;
 
-const BenefitSection = styled.section`
+const FeaturesSection = styled.section`
   position: relative;
   margin-top: 4rem;
 
@@ -341,7 +341,7 @@ const CardDescription = styled.p`
   line-height: 1rem;
 `;
 
-const ValueProps = styled.div`
+const ValuePropsBanner = styled.div`
   display: flex;
   margin-top: 3rem;
   flex-wrap: wrap;
@@ -361,25 +361,13 @@ const ValueProps = styled.div`
   }
 `;
 
-const NoCreditHit = styled.span`
+const ValueItem = styled.span`
   display: inline-flex;
   gap: 0.375rem;
   align-items: center;
 `;
 
-const Personalized = styled.span`
-  display: inline-flex;
-  gap: 0.375rem;
-  align-items: center;
-`;
-
-const NoFee = styled.span`
-  display: inline-flex;
-  gap: 0.375rem;
-  align-items: center;
-`;
-
-const SwiplyCollectionSection = styled.section`
+const CollectionSection = styled.section`
   margin-top: 4rem;
   margin-left: 20px;
   margin-right: 20px;
@@ -399,7 +387,7 @@ const SwiplyCollectionSection = styled.section`
   }
 `;
 
-const SwiplyDescriptionSection = styled.div`
+const SectionHeader = styled.div`
   width: 768px;
   max-width: 100%;
   text-align: center;
@@ -408,7 +396,7 @@ const SwiplyDescriptionSection = styled.div`
   align-items: center;
 `;
 
-const SwiplyTag = styled.div`
+const CategoryTag = styled.div`
   display: inline-flex;
   padding: 0.25rem 0.75rem;
   margin-bottom: 1rem;
@@ -427,7 +415,7 @@ const SwiplyTag = styled.div`
   height: 15px;
 `;
 
-const SwiplyCollectionSectionTitle = styled.h2`
+const SectionTitle = styled.h2`
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   line-height: 1.25;
   font-weight: 400;
@@ -456,7 +444,7 @@ const SwiplyCollectionSectionTitle = styled.h2`
   }
 `;
 
-const SwiplyCollectionSectionDescription = styled.p`
+const SectionDescription = styled.p`
   margin-top: 1.25rem;
   max-width: 36rem;
 `;
