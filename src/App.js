@@ -84,10 +84,13 @@ function App() {
       <SwiplyCollectionSection>
         <SwiplyDescriptionSection>
           <SwiplyTag>The Swiply Collection</SwiplyTag>
-
           <SwiplyCollectionSectionTitle>
             Every category, one <span>honest</span> comparison.
           </SwiplyCollectionSectionTitle>
+          <SwiplyCollectionSectionDescription>
+            Click any card to see the details that matter:annual fee, APR, cash
+            back categories, and who it’s actually right for.
+          </SwiplyCollectionSectionDescription>
         </SwiplyDescriptionSection>
       </SwiplyCollectionSection>
     </div>
@@ -377,16 +380,23 @@ const NoFee = styled.span`
 `;
 
 const SwiplyCollectionSection = styled.section`
-  margin-top: 8rem;
+  margin-top: 4rem;
+  margin-left: 20px;
+  margin-right: 20px;
   scroll-margin-top: 6rem;
-  margin-left: auto;
-  margin-right: auto;
   width: 1184px;
-  max-width: 100%;
+  max-width: calc(100% - 40px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 768px) {
+    margin-top: 6rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
 `;
 
 const SwiplyDescriptionSection = styled.div`
@@ -419,12 +429,13 @@ const SwiplyTag = styled.div`
 
 const SwiplyCollectionSectionTitle = styled.h2`
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 1rem;
   line-height: 1.25;
   font-weight: 400;
+  margin: 0;
+  font-size: 2.5rem;
 
   @media (min-width: 768px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   span {
@@ -443,4 +454,9 @@ const SwiplyCollectionSectionTitle = styled.h2`
 
     padding: 0 0.15em;
   }
+`;
+
+const SwiplyCollectionSectionDescription = styled.p`
+  margin-top: 1.25rem;
+  max-width: 36rem;
 `;
