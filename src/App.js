@@ -96,10 +96,10 @@ function App() {
         <ExampleCards>
           <Card>
             <CardHeader>
-              <CardLabel>
+              <ExampleCardLabel>
                 <img src={studentIcon} alt="student" />
                 <span>for students</span>
-              </CardLabel>
+              </ExampleCardLabel>
               <ExampleCardTitle>Lumen Study</ExampleCardTitle>
               <ExampleCardDescription>
                 Built for your first four years.
@@ -486,9 +486,39 @@ const Card = styled.div`
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+
+  background-color: #f2ebe1;
+  border: 1px solid #d7d0c7;
 `;
 
 const CardHeader = styled.div``;
+
+const ExampleCardLabel = styled.div`
+  display: inline-flex;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  gap: 0.5rem;
+  align-items: center;
+  border-radius: 9999px;
+  border-width: 1px;
+  background-color: white;
+  height: 15px;
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+
+  span {
+    font-family:
+      Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 9px;
+  }
+`;
 
 const ExampleCardTitle = styled.h3`
   margin-top: 0.75rem;
@@ -497,6 +527,7 @@ const ExampleCardTitle = styled.h3`
   line-height: 2rem;
   line-height: 1.25;
   margin-bottom: 0;
+  font-weight: 450;
 `;
 
 const ExampleCardDescription = styled.p`
