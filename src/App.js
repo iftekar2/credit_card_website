@@ -36,19 +36,19 @@ function App() {
       <FeaturesSection>
         <BenefitCards>
           <CardForStudent>
-            <CardTitle>
+            <CardLabel>
               <img src={studentIcon} alt="student" />
               <span>for students</span>
-            </CardTitle>
+            </CardLabel>
             <CardText>No Annual Fee</CardText>
             <CardDescription>Earn while you build history.</CardDescription>
           </CardForStudent>
 
           <CardForCreditBuilder>
-            <CardTitle>
+            <CardLabel>
               <img src={growthIcon} alt="growth" />
               <span>Building Credit</span>
-            </CardTitle>
+            </CardLabel>
             <CardText>0% Intro APR</CardText>
             <CardDescription>
               Graduate to unsecured in 6 months.
@@ -56,10 +56,10 @@ function App() {
           </CardForCreditBuilder>
 
           <BusinessCard>
-            <CardTitle>
+            <CardLabel>
               <img src={businessIcon} alt="business" />
               <span>For Business</span>
-            </CardTitle>
+            </CardLabel>
             <CardText>Up to 5% back</CardText>
             <CardDescription>On ads, SaaS, and shipping.</CardDescription>
           </BusinessCard>
@@ -92,6 +92,21 @@ function App() {
             back categories, and who it’s actually right for.
           </SectionDescription>
         </SectionHeader>
+
+        <ExampleCards>
+          <Card>
+            <CardHeader>
+              <CardLabel>
+                <img src={studentIcon} alt="student" />
+                <span>for students</span>
+              </CardLabel>
+              <ExampleCardTitle>Lumen Study</ExampleCardTitle>
+              <ExampleCardDescription>
+                Built for your first four years.
+              </ExampleCardDescription>
+            </CardHeader>
+          </Card>
+        </ExampleCards>
       </CollectionSection>
     </div>
   );
@@ -301,7 +316,7 @@ const BusinessCard = styled.div`
   width: 15rem;
 `;
 
-const CardTitle = styled.div`
+const CardLabel = styled.div`
   display: inline-flex;
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
@@ -447,4 +462,46 @@ const SectionTitle = styled.h2`
 const SectionDescription = styled.p`
   margin-top: 1.25rem;
   max-width: 36rem;
+`;
+
+const ExampleCards = styled.div`display: grid 
+margin-top: 3rem; 
+grid-template-columns: repeat(1, minmax(0, 1fr)); 
+gap: 1rem; 
+
+
+@media (min-width: 768px) { 
+  grid-template-columns: repeat(2, minmax(0, 1fr)); 
+ }
+@media (min-width: 1024px) { 
+  grid-template-columns: repeat(3, minmax(0, 1fr)); 
+ }`;
+
+const Card = styled.div`
+  overflow: hidden;
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border-width: 1px;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+`;
+
+const CardHeader = styled.div``;
+
+const ExampleCardTitle = styled.h3`
+  margin-top: 0.75rem;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  line-height: 1.25;
+  margin-bottom: 0;
+`;
+
+const ExampleCardDescription = styled.p`
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  max-width: 22ch;
 `;
