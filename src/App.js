@@ -100,11 +100,59 @@ function App() {
                 <img src={studentIcon} alt="student" />
                 <span>for students</span>
               </ExampleCardLabel>
-              <ExampleCardTitle>Lumen Study</ExampleCardTitle>
+              <ExampleCardTitle>
+                Discover it® Student Cash Back
+              </ExampleCardTitle>
               <ExampleCardDescription>
-                Built for your first four years.
+                Rotating 5% categories, built for students.
               </ExampleCardDescription>
             </CardHeader>
+
+            <CardImage>
+              <img
+                src="https://www.nerdwallet.com/cdn-cgi/image/format=auto,width=338,quality=80,sharpen=1/cdn/images/marketplace/credit_cards/a4a36a73-0294-4ca1-b36b-3eef5cee53ca/a1de1f5a52d4ab48b729c2ea25588d40b1b0382c84ddac318b584f1d62aa37bd.jpg"
+                alt="Discover it® Student Cash Back"
+              />
+            </CardImage>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <ExampleCardLabel>
+                <img src={growthIcon} alt="student" />
+                <span>for growth</span>
+              </ExampleCardLabel>
+              <ExampleCardTitle>Capital One Platinum Secured</ExampleCardTitle>
+              <ExampleCardDescription>
+                A refundable deposit that grows your line.
+              </ExampleCardDescription>
+            </CardHeader>
+
+            <CardImage>
+              <img
+                src="https://ecm.capitalone.com/WCM/card/products/plat_cardart_prim_323x203.png"
+                alt="Capital One Platinum Secured"
+              />
+            </CardImage>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <ExampleCardLabel>
+                <img src={businessIcon} alt="business" />
+                <span>for businesses</span>
+              </ExampleCardLabel>
+              <ExampleCardTitle>Ink Business Preferred® Card</ExampleCardTitle>
+              <ExampleCardDescription>
+                Big welcome bonus for growing teams.
+              </ExampleCardDescription>
+            </CardHeader>
+            <CardImage>
+              <img
+                src="https://sites.chase.com//content/services/rendition/image.large.png/unified-assets/digital-cards/chase-ink/41473467055.png"
+                alt="Ink Business Preferred® Card"
+              />
+            </CardImage>
           </Card>
         </ExampleCards>
       </CollectionSection>
@@ -464,20 +512,24 @@ const SectionDescription = styled.p`
   max-width: 36rem;
 `;
 
-const ExampleCards = styled.div`display: grid 
-margin-top: 3rem; 
-grid-template-columns: repeat(1, minmax(0, 1fr)); 
-gap: 1rem; 
+const ExampleCards = styled.div`
+  display: grid 
+  margin-top: 3rem; 
+  grid-template-columns: repeat(1, minmax(0, 1fr)); 
+  gap: 1rem; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 
-@media (min-width: 768px) { 
-  grid-template-columns: repeat(2, minmax(0, 1fr)); 
- }
-@media (min-width: 1024px) { 
-  grid-template-columns: repeat(3, minmax(0, 1fr)); 
+  @media (min-width: 768px) { 
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  }
+  @media (min-width: 1024px) { 
+    grid-template-columns: repeat(3, minmax(0, 1fr)); 
  }`;
 
-const Card = styled.div`
+const Card = styled.article`
   overflow: hidden;
   position: relative;
   padding: 1.5rem;
@@ -486,9 +538,9 @@ const Card = styled.div`
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
-
-  background-color: #f2ebe1;
+  background-color: white;
   border: 1px solid #d7d0c7;
+  width: 350px;
 `;
 
 const CardHeader = styled.div``;
@@ -534,5 +586,16 @@ const ExampleCardDescription = styled.p`
   margin-top: 0.25rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  max-width: 22ch;
+`;
+
+const CardImage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+
+  img {
+    height: 200px;
+    width: 300px;
+  }
 `;
