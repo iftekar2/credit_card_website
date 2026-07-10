@@ -114,6 +114,15 @@ function App() {
                 alt="Discover it® Student Cash Back"
               />
             </CardImage>
+
+            <CardQualification>
+              <li>Be at least 18 years old.</li>
+              <li>Be actively enrolled in a college, university.</li>
+              <li>
+                Have an independent source of income (part-time job, financial
+                aid/scholarships)
+              </li>
+            </CardQualification>
           </Card>
 
           <Card>
@@ -134,6 +143,13 @@ function App() {
                 alt="Capital One Platinum Secured"
               />
             </CardImage>
+
+            <CardQualification>
+              <li>Be at least 18 years old.</li>
+              <li>A valid Social Security number.</li>
+              <li>A physical U.S. street address.</li>
+              <li>A valid checking or savings account.</li>
+            </CardQualification>
           </Card>
 
           <Card>
@@ -147,12 +163,21 @@ function App() {
                 Big welcome bonus for growing teams.
               </ExampleCardDescription>
             </CardHeader>
+
             <CardImage>
               <img
                 src="https://sites.chase.com//content/services/rendition/image.large.png/unified-assets/digital-cards/chase-ink/41473467055.png"
                 alt="Ink Business Preferred® Card"
               />
             </CardImage>
+
+            <CardQualification>
+              <li>A minimum credit score of 670 is required.</li>
+              <li>
+                Have not opened more than 5 credit cards in the last 24 months.
+              </li>
+              <li>LLCs, Corporations, Partnerships is required.</li>
+            </CardQualification>
           </Card>
         </ExampleCards>
       </CollectionSection>
@@ -510,6 +535,7 @@ const SectionTitle = styled.h2`
 const SectionDescription = styled.p`
   margin-top: 1.25rem;
   max-width: 36rem;
+  margin-bottom: 4rem;
 `;
 
 const ExampleCards = styled.div`
@@ -557,6 +583,7 @@ const ExampleCardLabel = styled.div`
   border-width: 1px;
   background-color: white;
   height: 15px;
+  border: 1px solid #d7d0c7;
 
   img {
     width: 18px;
@@ -593,9 +620,23 @@ const CardImage = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 30px;
+  margin-bottom: 30px;
 
   img {
     height: 200px;
     width: 300px;
+  }
+`;
+
+const CardQualification = styled.ul`
+  padding-top: 1rem;
+  margin-top: 0.375rem;
+  border-top: 1px solid #ccc;
+  padding-left: 15px;
+  list-style-type: disc;
+
+  li {
+    font-size: 0.8rem;
+    line-height: 1rem;
   }
 `;
