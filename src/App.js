@@ -3,6 +3,7 @@ import studentIcon from "./image/icons8-student-50.png";
 import growthIcon from "./image/icons8-escalator-up-50.png";
 import businessIcon from "./image/icons8-small-business-50.png";
 import checkIcon from "./image/icons8-correct-50.png";
+import nextPageArrow from "./image/icons8-up-right-50.png";
 
 function App() {
   return (
@@ -96,10 +97,16 @@ function App() {
         <ExampleCards>
           <Card>
             <CardHeader>
-              <ExampleCardLabel>
-                <img src={studentIcon} alt="student" />
-                <span>for students</span>
-              </ExampleCardLabel>
+              <ExampleCardLabelSection>
+                <ExampleCardLabel>
+                  <img src={studentIcon} alt="student" />
+                  <span>for students</span>
+                </ExampleCardLabel>
+
+                <CardMoreDetails>
+                  <img src={nextPageArrow} alt="Next page arrow" />
+                </CardMoreDetails>
+              </ExampleCardLabelSection>
               <ExampleCardTitle>
                 Discover it® Student Cash Back
               </ExampleCardTitle>
@@ -127,10 +134,17 @@ function App() {
 
           <Card>
             <CardHeader>
-              <ExampleCardLabel>
-                <img src={growthIcon} alt="student" />
-                <span>for growth</span>
-              </ExampleCardLabel>
+              <ExampleCardLabelSection>
+                <ExampleCardLabel>
+                  <img src={growthIcon} alt="student" />
+                  <span>for growth</span>
+                </ExampleCardLabel>
+
+                <CardMoreDetails>
+                  <img src={nextPageArrow} alt="Next page arrow" />
+                </CardMoreDetails>
+              </ExampleCardLabelSection>
+
               <ExampleCardTitle>Capital One Platinum Secured</ExampleCardTitle>
               <ExampleCardDescription>
                 A refundable deposit that grows your line.
@@ -154,10 +168,17 @@ function App() {
 
           <Card>
             <CardHeader>
-              <ExampleCardLabel>
-                <img src={businessIcon} alt="business" />
-                <span>for businesses</span>
-              </ExampleCardLabel>
+              <ExampleCardLabelSection>
+                <ExampleCardLabel>
+                  <img src={businessIcon} alt="business" />
+                  <span>for businesses</span>
+                </ExampleCardLabel>
+
+                <CardMoreDetails>
+                  <img src={nextPageArrow} alt="Next page arrow" />
+                </CardMoreDetails>
+              </ExampleCardLabelSection>
+
               <ExampleCardTitle>Ink Business Preferred® Card</ExampleCardTitle>
               <ExampleCardDescription>
                 Big welcome bonus for growing teams.
@@ -571,6 +592,11 @@ const Card = styled.article`
 
 const CardHeader = styled.div``;
 
+const ExampleCardLabelSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const ExampleCardLabel = styled.div`
   display: inline-flex;
   padding-top: 0.375rem;
@@ -596,6 +622,13 @@ const ExampleCardLabel = styled.div`
     letter-spacing: 0.1em;
     text-transform: uppercase;
     font-size: 9px;
+  }
+`;
+
+const CardMoreDetails = styled.div`
+  img {
+    height: 16px;
+    width: 16px;
   }
 `;
 
