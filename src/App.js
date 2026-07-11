@@ -371,7 +371,7 @@ const Main = styled.main`
   position: relative;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  padding-bottom: 6rem;
+  padding-bottom: 4rem;
   max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
@@ -847,7 +847,7 @@ const CardQualification = styled.ul`
 `;
 
 const SignupSection = styled.section`
-  margin-top: 8rem;
+  margin-top: 4rem;
   scroll-margin-top: 6rem;
 `;
 
