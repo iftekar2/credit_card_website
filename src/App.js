@@ -5,6 +5,7 @@ import businessIcon from "./image/icons8-small-business-50.png";
 import checkIcon from "./image/icons8-correct-50.png";
 import nextPageArrow from "./image/icons8-up-right-50.png";
 import starIcon from "./image/icons8-star-30.png";
+import separatorIcon from "./image/icons8-star-48.png";
 
 function App() {
   return (
@@ -270,6 +271,22 @@ function App() {
               </SmallLabel>
             </EarlyAccessBadge>
           </SignupHeader>
+
+          <SignupBody>
+            <SectionSeparator>
+              <img src={separatorIcon} />
+            </SectionSeparator>
+
+            <SignupBodyTitle>
+              Join our <em>waitlist</em>
+            </SignupBodyTitle>
+
+            <SignupBodyDescription>
+              Get early access to the credit card matcher built for students,
+              credit builders, and business owners. First 500 members get a
+              founding perk.
+            </SignupBodyDescription>
+          </SignupBody>
         </SignupComponent>
       </SignupSection>
     </Main>
@@ -859,5 +876,60 @@ const Star = styled.div`
   img {
     height: 18px;
     width: 18px;
+  }
+`;
+
+const SignupBody = styled.div`
+  margin-top: 4rem;
+  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const SectionSeparator = styled.div`
+  img {
+    height: 35px;
+    width: 35px;
+  }
+`;
+
+const SignupBodyTitle = styled.h2`
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #09090b;
+  margin: 0;
+  font-size: 3rem;
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+
+  em {
+    font-style: italic;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 400;
+  }
+`;
+
+const SignupBodyDescription = styled.p`
+  margin-top: 5px;
+  max-width: 28rem;
+  font-size: 0.875rem;
+  font-wight: 400;
+  line-height: 1.25rem;
+  line-height: 1.625;
+  color: #5a5a5a;
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #5a5a5a;
+    font-wight: 700;
   }
 `;
