@@ -4,6 +4,7 @@ import growthIcon from "./image/icons8-escalator-up-50.png";
 import businessIcon from "./image/icons8-small-business-50.png";
 import checkIcon from "./image/icons8-correct-50.png";
 import nextPageArrow from "./image/icons8-up-right-50.png";
+import starIcon from "./image/icons8-star-30.png";
 
 function App() {
   return (
@@ -205,41 +206,70 @@ function App() {
 
       <SignupSection>
         <SignupComponent>
-          <TagContainer>
-            <TagTitle>NO. 0042 · LUMEN CARD MATCHER</TagTitle>
-            <BarcodeContainer>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 0 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 0 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 0 }}></span>
-              <span style={{ opacity: 0 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 0 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 0 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 0 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 0 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 0 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 0 }}></span>
-              <span style={{ opacity: 0 }}></span>
-              <span style={{ opacity: 1 }}></span>
-              <span style={{ opacity: 0 }}></span>
-            </BarcodeContainer>
-          </TagContainer>
+          <SignupHeader>
+            <TagContainer>
+              <TagTitle>NO. 0042 · LUMEN CARD MATCHER</TagTitle>
+              <BarcodeContainer>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 0 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 0 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 0 }}></span>
+                <span style={{ opacity: 0 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 0 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 0 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 0 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 0 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 0 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 0 }}></span>
+                <span style={{ opacity: 0 }}></span>
+                <span style={{ opacity: 1 }}></span>
+                <span style={{ opacity: 0 }}></span>
+              </BarcodeContainer>
+            </TagContainer>
+
+            <EarlyAccessBadge>
+              <SmallLabel>Early access</SmallLabel>
+              <SubtitleText>Founding member</SubtitleText>
+
+              <StarContainer>
+                <Star>
+                  <img src={starIcon} alt="Star" />
+                </Star>
+                <Star>
+                  <img src={starIcon} alt="Star" />
+                </Star>
+                <Star>
+                  <img src={starIcon} alt="Star" />
+                </Star>
+                <Star>
+                  <img src={starIcon} alt="Star" />
+                </Star>
+                <Star>
+                  <img src={starIcon} alt="Star" />
+                </Star>
+              </StarContainer>
+
+              <SmallLabel style={{ marginTop: "4px" }}>
+                No annual fee · Est. 2026
+              </SmallLabel>
+            </EarlyAccessBadge>
+          </SignupHeader>
         </SignupComponent>
       </SignupSection>
     </Main>
@@ -273,8 +303,8 @@ const SiteHeader = styled.header`
 
   @media (min-width: 768px) {
     .my-container {
-      padding-left: 3rem; /* 48px */
-      padding-right: 3rem; /* 48px */
+      padding-left: 3rem;
+      padding-right: 3rem;
     }
   }
 `;
@@ -431,12 +461,12 @@ const FeaturesSection = styled.section`
 
 const BenefitCards = styled.div`
   display: flex;
-  flex-direction: row; /* Keep items in a horizontal row when space allows */
-  flex-wrap: wrap; /* Allows cards to wrap to a new line when squeezed */
-  justify-content: center; /* Centers wrapped items on the new line */
-  align-items: stretch; /* Stretches side-by-side cards to match heights */
-  gap: 1rem; /* Maintains your required 1rem spacing on all sides */
-  padding: 0 1rem; /* Prevents cards from hitting the absolute edge of mobile screens */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+  padding: 0 1rem;
 `;
 
 const CardForStudent = styled.div`
@@ -738,7 +768,6 @@ const SignupComponent = styled.div`
   border-radius: 1.5rem;
   border-width: 1px;
   border: 1px solid #d7d0c7;
-
   position: relative;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -752,13 +781,20 @@ const SignupComponent = styled.div`
     padding-bottom: 6rem;
   }
 `;
+
+const SignupHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const TagContainer = styled.div`
   font-family:
     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #71717a; /* Tailwind text-muted-foreground */
+  color: #71717a;
 `;
 
 const TagTitle = styled.div`
@@ -767,13 +803,61 @@ const TagTitle = styled.div`
 
 const BarcodeContainer = styled.div`
   display: flex;
-  gap: 2px; /* Tailwind gap-0.5 */
-  margin-top: 4px; /* Tailwind mt-1 */
+  gap: 2px;
+  margin-top: 4px;
 
   span {
     display: block;
-    height: 16px; /* Tailwind h-4 */
-    width: 2px; /* Tailwind w-[2px] */
-    background-color: #09090b; /* Tailwind bg-foreground */
+    height: 16px;
+    width: 2px;
+    background-color: #09090b;
+  }
+`;
+
+const EarlyAccessBadge = styled.div`
+  display: none;
+  text-align: right;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+`;
+
+const SmallLabel = styled.div`
+  font-family:
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #71717a;
+`;
+
+const SubtitleText = styled.div`
+  margin-top: 4px;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.125rem;
+  font-style: italic;
+  color: #09090b;
+`;
+
+const StarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  margin-top: 4px;
+  color: #dfab00;
+
+  svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+  }
+`;
+
+const Star = styled.div`
+  img {
+    height: 18px;
+    width: 18px;
   }
 `;
