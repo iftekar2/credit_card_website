@@ -7,7 +7,7 @@ import nextPageArrow from "./image/icons8-up-right-50.png";
 
 function App() {
   return (
-    <div className="App">
+    <Main className="App">
       <SiteHeader className="App-header">
         <Logo>Swiply</Logo>
       </SiteHeader>
@@ -202,11 +202,66 @@ function App() {
           </Card>
         </ExampleCards>
       </CollectionSection>
-    </div>
+
+      <SignupSection>
+        <SignupComponent>
+          <TagContainer>
+            <TagTitle>NO. 0042 · LUMEN CARD MATCHER</TagTitle>
+            <BarcodeContainer>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 0 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 0 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 0 }}></span>
+              <span style={{ opacity: 0 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 0 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 0 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 0 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 0 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 0 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 0 }}></span>
+              <span style={{ opacity: 0 }}></span>
+              <span style={{ opacity: 1 }}></span>
+              <span style={{ opacity: 0 }}></span>
+            </BarcodeContainer>
+          </TagContainer>
+        </SignupComponent>
+      </SignupSection>
+    </Main>
   );
 }
 
 export default App;
+
+const Main = styled.main`
+  position: relative;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 6rem;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 768px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+`;
 
 const SiteHeader = styled.header`
   position: relative;
@@ -669,5 +724,56 @@ const CardQualification = styled.ul`
   li {
     font-size: 0.8rem;
     line-height: 1rem;
+  }
+`;
+
+const SignupSection = styled.section`
+  margin-top: 8rem;
+  scroll-margin-top: 6rem;
+`;
+
+const SignupComponent = styled.div`
+  overflow: hidden;
+  position: relative;
+  border-radius: 1.5rem;
+  border-width: 1px;
+  border: 1px solid #d7d0c7;
+
+  position: relative;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+
+  @media (min-width: 768px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+`;
+const TagContainer = styled.div`
+  font-family:
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #71717a; /* Tailwind text-muted-foreground */
+`;
+
+const TagTitle = styled.div`
+  font-weight: 500;
+`;
+
+const BarcodeContainer = styled.div`
+  display: flex;
+  gap: 2px; /* Tailwind gap-0.5 */
+  margin-top: 4px; /* Tailwind mt-1 */
+
+  span {
+    display: block;
+    height: 16px; /* Tailwind h-4 */
+    width: 2px; /* Tailwind w-[2px] */
+    background-color: #09090b; /* Tailwind bg-foreground */
   }
 `;
