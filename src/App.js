@@ -89,7 +89,7 @@ function App() {
             Every category, one <span>honest</span> comparison.
           </SectionTitle>
           <SectionDescription>
-            Click any card to see the details that matter:annual fee, APR, cash
+            Click any card to see the details that matter: annual fee, APR, cash
             back categories, and who it’s actually right for.
           </SectionDescription>
         </SectionHeader>
@@ -554,7 +554,7 @@ const SectionTitle = styled.h2`
 const SectionDescription = styled.p`
   margin-top: 1.25rem;
   max-width: 36rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 `;
 
 const ExampleCards = styled.div`
@@ -564,10 +564,8 @@ const ExampleCards = styled.div`
   justify-content: center;
   align-items: stretch;
   gap: 1rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
   padding: 0 1rem;
-
-  /* Fixes the wiggle by keeping padding inside the width boundaries */
   box-sizing: border-box;
   width: 100%;
 
