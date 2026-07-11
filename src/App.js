@@ -5,9 +5,16 @@ import businessIcon from "./image/icons8-small-business-50.png";
 import checkIcon from "./image/icons8-correct-50.png";
 import nextPageArrow from "./image/icons8-up-right-50.png";
 import starIcon from "./image/icons8-star-30.png";
-import separatorIcon from "./image/icons8-star-48.png";
+import React, { useState } from "react";
 
 function App() {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted Email:", email);
+  };
+
   return (
     <Main className="App">
       <SiteHeader className="App-header">
@@ -273,9 +280,7 @@ function App() {
           </SignupHeader>
 
           <SignupBody>
-            <SectionSeparator>
-              <img src={separatorIcon} />
-            </SectionSeparator>
+            <SectionSeparator>✦</SectionSeparator>
 
             <SignupBodyTitle>
               Join our <em>waitlist</em>
@@ -287,6 +292,73 @@ function App() {
               founding perk.
             </SignupBodyDescription>
           </SignupBody>
+
+          <FormContainer onSubmit={handleSubmit}>
+            <FormLabel htmlFor="waitlist-email">Email address</FormLabel>
+
+            <InputWrapper>
+              <StyledInput
+                id="waitlist-email"
+                type="email"
+                required
+                placeholder="example@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <SubmitButton type="submit">
+                Get early access
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </SubmitButton>
+            </InputWrapper>
+
+            <FooterContainer>
+              <FooterBadge>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                No spam
+              </FooterBadge>
+              <span>·</span>
+              <FooterBadge>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                Unsubscribe anytime
+              </FooterBadge>
+              <span>·</span>
+              <span>2,400+ on the list</span>
+            </FooterContainer>
+          </FormContainer>
         </SignupComponent>
       </SignupSection>
     </Main>
@@ -792,10 +864,10 @@ const SignupComponent = styled.div`
   padding-bottom: 4rem;
 
   @media (min-width: 768px) {
-    padding-left: 4rem;
-    padding-right: 4rem;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 `;
 
@@ -892,10 +964,8 @@ const SignupBody = styled.div`
 `;
 
 const SectionSeparator = styled.div`
-  img {
-    height: 35px;
-    width: 35px;
-  }
+  font-size: 50px;
+  margin-bottom: 20px;
 `;
 
 const SignupBodyTitle = styled.h2`
@@ -931,5 +1001,114 @@ const SignupBodyDescription = styled.p`
     line-height: 1.5rem;
     color: #5a5a5a;
     font-wight: 700;
+  }
+`;
+
+const FormContainer = styled.form`
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5rem;
+  max-width: 28rem;
+  width: 100%;
+`;
+
+const FormLabel = styled.label`
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-family:
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #71717a;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  overflow: hidden;
+  border-radius: 9999px;
+  border: 1px solid #e4e4e7;
+  background-color: #ffffff;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease-in-out;
+
+  &:focus-within {
+    border-color: #09090b;
+    box-shadow: 0 0 0 2px rgba(9, 9, 11, 0.15);
+  }
+`;
+
+const StyledInput = styled.input`
+  flex: 1;
+  background-color: transparent;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  border: none;
+  outline: none;
+  color: #09090b;
+
+  &::placeholder {
+    color: #a1a1aa;
+  }
+`;
+
+const SubmitButton = styled.button`
+  inline-flex: true;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  background-color: #09090b;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+`;
+
+const FooterContainer = styled.div`
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family:
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #71717a;
+
+  span {
+    font-size: 12px;
+  }
+`;
+
+const FooterBadge = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 12px;
+
+  svg {
+    width: 12px;
+    height: 12px;
+    color: #10b981;
   }
 `;
