@@ -355,16 +355,14 @@ const FeaturesSection = styled.section`
 
 const BenefitCards = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    align-items: flex-end;
-  }
+  flex-direction: row; /* Keep items in a horizontal row when space allows */
+  flex-wrap: wrap; /* Allows cards to wrap to a new line when squeezed */
+  justify-content: center; /* Centers wrapped items on the new line */
+  align-items: stretch; /* Stretches side-by-side cards to match heights */
+  gap: 1rem; /* Maintains your required 1rem spacing on all sides */
+  padding: 0 1rem; /* Prevents cards from hitting the absolute edge of mobile screens */
 `;
+
 const CardForStudent = styled.div`
   padding: 1.25rem;
   border-radius: 1rem;
@@ -535,38 +533,40 @@ const SectionTitle = styled.h2`
 const SectionDescription = styled.p`
   margin-top: 1.25rem;
   max-width: 36rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 `;
 
 const ExampleCards = styled.div`
-  display: grid 
-  margin-top: 3rem; 
-  grid-template-columns: repeat(1, minmax(0, 1fr)); 
-  gap: 1rem; 
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding: 0 1rem;
 
+  /* Fixes the wiggle by keeping padding inside the width boundaries */
+  box-sizing: border-box;
+  width: 100%;
 
-  @media (min-width: 768px) { 
-    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  @media (min-width: 1024px) {
+    flex-wrap: nowrap;
   }
-  @media (min-width: 1024px) { 
-    grid-template-columns: repeat(3, minmax(0, 1fr)); 
- }`;
+`;
 
 const Card = styled.article`
   overflow: hidden;
   position: relative;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 1.5rem;
-  border-width: 1px;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
   background-color: white;
   border: 1px solid #d7d0c7;
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
 `;
 
 const CardHeader = styled.div``;
