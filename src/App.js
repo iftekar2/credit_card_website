@@ -383,7 +383,7 @@ const Main = styled.main`
   position: relative;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  padding-bottom: 4rem;
+  padding-bottom: 1.5rem;
   max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
