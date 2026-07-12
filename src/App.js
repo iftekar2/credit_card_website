@@ -364,7 +364,7 @@ function App() {
 
       <FooterSection>
         <FooterTitleContainer>
-          <FooterTitle>All Rights reserved @ 2026</FooterTitle>
+          <FooterTitle>© 2026 all rights reserved.</FooterTitle>
         </FooterTitleContainer>
 
         {/* <PagesContainer>
