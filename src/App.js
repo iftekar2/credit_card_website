@@ -828,8 +828,9 @@ const CardImage = styled.div`
   margin-bottom: 30px;
 
   img {
-    height: 200px;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
   }
 `;
 
