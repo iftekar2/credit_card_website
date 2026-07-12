@@ -323,7 +323,7 @@ function App() {
               </SubmitButton>
             </InputWrapper>
 
-            <FooterContainer>
+            <SignupFormFooterContainer>
               <FooterBadge>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -357,10 +357,22 @@ function App() {
               </FooterBadge>
               <span>·</span>
               <span>2,400+ on the list</span>
-            </FooterContainer>
+            </SignupFormFooterContainer>
           </FormContainer>
         </SignupComponent>
       </SignupSection>
+
+      <FooterSection>
+        <FooterTitleContainer>
+          <FooterTitle>All Rights reserved @ 2026</FooterTitle>
+        </FooterTitleContainer>
+
+        {/* <PagesContainer>
+          <Pages>Pages</Pages>
+        </PagesContainer>
+
+        <div aria-hidden="true" /> */}
+      </FooterSection>
     </Main>
   );
 }
@@ -849,6 +861,7 @@ const CardQualification = styled.ul`
 
 const SignupSection = styled.section`
   margin-top: 4rem;
+  margin-bottom: 4rem;
   scroll-margin-top: 6rem;
 `;
 
@@ -1082,7 +1095,7 @@ const SubmitButton = styled.button`
   }
 `;
 
-const FooterContainer = styled.div`
+const SignupFormFooterContainer = styled.div`
   margin-top: 14px;
   display: flex;
   flex-wrap: wrap;
@@ -1113,3 +1126,39 @@ const FooterBadge = styled.span`
     color: #10b981;
   }
 `;
+
+const FooterSection = styled.div`
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-top: 1px solid #d7d0c7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
+const FooterTitleContainer = styled.div``;
+
+const FooterTitle = styled.p`
+  font-family:
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 14px;
+  color: black;
+  margin: 0;
+`;
+
+// const PagesContainer = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
+
+// const Pages = styled.div`
+//   font-family:
+//     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+//   font-size: 14px;
+//   color: black;
+//   text-align: center;
+// `;
