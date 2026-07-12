@@ -216,7 +216,7 @@ function App() {
         <SignupComponent>
           <SignupHeader>
             <TagContainer>
-              <TagTitle>NO. 0042 · LUMEN CARD MATCHER</TagTitle>
+              <TagTitle>NO. 0042 · Swiply CARD MATCHER</TagTitle>
               <BarcodeContainer>
                 <span style={{ opacity: 1 }}></span>
                 <span style={{ opacity: 0 }}></span>
