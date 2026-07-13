@@ -6,13 +6,53 @@ import checkIcon from "./image/icons8-correct-50.png";
 import nextPageArrow from "./image/icons8-up-right-50.png";
 import starIcon from "./image/icons8-star-30.png";
 import React, { useState } from "react";
+import { supabase } from "./supabaseClient";
 
 function App() {
   const [email, setEmail] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitted Email:", email);
+
+    const trimmedEmail = email.trim();
+
+    if (!supabase) {
+      setStatusMessage("Waitlist is not configured yet.");
+      return;
+    }
+
+    try {
+      const { data: existingUsers, error: selectError } = await supabase
+        .from("waitlist")
+        .select("email")
+        .ilike("email", trimmedEmail)
+        .limit(1);
+
+      if (selectError) {
+        throw selectError;
+      }
+
+      if (existingUsers && existingUsers.length > 0) {
+        setStatusMessage("You’re already on the waitlist!");
+        setEmail("");
+        return;
+      }
+
+      const { error: insertError } = await supabase
+        .from("waitlist")
+        .insert([{ email: trimmedEmail }]);
+
+      if (insertError) {
+        throw insertError;
+      }
+
+      setStatusMessage("You’re on the waitlist!");
+      setEmail("");
+    } catch (error) {
+      console.error("Error saving email:", error);
+      setStatusMessage("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -214,151 +254,158 @@ function App() {
 
       <SignupSection>
         <SignupComponent>
-          <SignupHeader>
-            <TagContainer>
-              <TagTitle>NO. 0042 · Swiply CARD MATCHER</TagTitle>
-              <BarcodeContainer>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 0 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 0 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 0 }}></span>
-                <span style={{ opacity: 0 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 0 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 0 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 0 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 0 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 0 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 0 }}></span>
-                <span style={{ opacity: 0 }}></span>
-                <span style={{ opacity: 1 }}></span>
-                <span style={{ opacity: 0 }}></span>
-              </BarcodeContainer>
-            </TagContainer>
+          {statusMessage ? (
+            <FormMessage>{statusMessage}</FormMessage>
+          ) : (
+            <>
+              <SignupHeader>
+                <TagContainer>
+                  <TagTitle>NO. 0042 · Swiply CARD MATCHER</TagTitle>
+                  <BarcodeContainer>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 0 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 0 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 0 }}></span>
+                    <span style={{ opacity: 0 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 0 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 0 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 0 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 0 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 0 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 0 }}></span>
+                    <span style={{ opacity: 0 }}></span>
+                    <span style={{ opacity: 1 }}></span>
+                    <span style={{ opacity: 0 }}></span>
+                  </BarcodeContainer>
+                </TagContainer>
 
-            <EarlyAccessBadge>
-              <SmallLabel>Early access</SmallLabel>
-              <SubtitleText>Founding member</SubtitleText>
+                <EarlyAccessBadge>
+                  <SmallLabel>Early access</SmallLabel>
+                  <SubtitleText>Founding member</SubtitleText>
 
-              <StarContainer>
-                <Star>
-                  <img src={starIcon} alt="Star" />
-                </Star>
-                <Star>
-                  <img src={starIcon} alt="Star" />
-                </Star>
-                <Star>
-                  <img src={starIcon} alt="Star" />
-                </Star>
-                <Star>
-                  <img src={starIcon} alt="Star" />
-                </Star>
-                <Star>
-                  <img src={starIcon} alt="Star" />
-                </Star>
-              </StarContainer>
+                  <StarContainer>
+                    <Star>
+                      <img src={starIcon} alt="Star" />
+                    </Star>
+                    <Star>
+                      <img src={starIcon} alt="Star" />
+                    </Star>
+                    <Star>
+                      <img src={starIcon} alt="Star" />
+                    </Star>
+                    <Star>
+                      <img src={starIcon} alt="Star" />
+                    </Star>
+                    <Star>
+                      <img src={starIcon} alt="Star" />
+                    </Star>
+                  </StarContainer>
 
-              <SmallLabel style={{ marginTop: "4px" }}>
-                No annual fee · Est. 2026
-              </SmallLabel>
-            </EarlyAccessBadge>
-          </SignupHeader>
+                  <SmallLabel style={{ marginTop: "4px" }}>
+                    No annual fee · Est. 2026
+                  </SmallLabel>
+                </EarlyAccessBadge>
+              </SignupHeader>
 
-          <SignupBody>
-            <SectionSeparator>✦</SectionSeparator>
+              <SignupBody>
+                <SectionSeparator>✦</SectionSeparator>
 
-            <SignupBodyTitle>
-              Join our <em>waitlist</em>
-            </SignupBodyTitle>
+                <SignupBodyTitle>
+                  Join our <em>waitlist</em>
+                </SignupBodyTitle>
 
-            <SignupBodyDescription>
-              Get early access to the credit card matcher built for students,
-              credit builders, and business owners. First 500 members get a
-              founding perk.
-            </SignupBodyDescription>
-          </SignupBody>
+                <SignupBodyDescription>
+                  Get early access to the credit card matcher built for
+                  students, credit builders, and business owners. First 500
+                  members get a founding perk.
+                </SignupBodyDescription>
+              </SignupBody>
 
-          <FormContainer onSubmit={handleSubmit}>
-            <FormLabel htmlFor="waitlist-email">Email address</FormLabel>
+              <FormContainer onSubmit={handleSubmit}>
+                <FormLabel htmlFor="waitlist-email">Email address</FormLabel>
 
-            <InputWrapper>
-              <StyledInput
-                id="waitlist-email"
-                type="email"
-                required
-                placeholder="example@gmail.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <SubmitButton type="submit">
-                Get early access
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M5 12h14"></path>
-                  <path d="m12 5 7 7-7 7"></path>
-                </svg>
-              </SubmitButton>
-            </InputWrapper>
+                <InputWrapper>
+                  <StyledInput
+                    id="waitlist-email"
+                    type="email"
+                    required
+                    placeholder="example@gmail.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
 
-            <SignupFormFooterContainer>
-              <FooterBadge>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M20 6 9 17l-5-5"></path>
-                </svg>
-                No spam
-              </FooterBadge>
-              <span>·</span>
-              <FooterBadge>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M20 6 9 17l-5-5"></path>
-                </svg>
-                Unsubscribe anytime
-              </FooterBadge>
-              <span>·</span>
-              <span>2,400+ on the list</span>
-            </SignupFormFooterContainer>
-          </FormContainer>
+                  <SubmitButton type="submit">
+                    Get early access
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </SubmitButton>
+                </InputWrapper>
+
+                <SignupFormFooterContainer>
+                  <FooterBadge>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path>
+                    </svg>
+                    No spam
+                  </FooterBadge>
+                  <span>·</span>
+                  <FooterBadge>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path>
+                    </svg>
+                    Unsubscribe anytime
+                  </FooterBadge>
+                  <span>·</span>
+                  <span>2,400+ on the list</span>
+                </SignupFormFooterContainer>
+              </FormContainer>
+            </>
+          )}
         </SignupComponent>
       </SignupSection>
 
@@ -378,6 +425,17 @@ function App() {
 }
 
 export default App;
+
+const FormMessage = styled.p`
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111827;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Main = styled.main`
   position: relative;
