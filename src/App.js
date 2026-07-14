@@ -294,6 +294,12 @@ function App() {
             <WelcomeMessage>
               Welcome to <span>Swiply</span>
             </WelcomeMessage>
+
+            <WelcomeMessageDetails>
+              We saved your spot. You are on top of the list to get access to
+              the <span>Swiply</span> as soon as it comes out. Keep an eye on
+              your email.
+            </WelcomeMessageDetails>
           </FormSubmittedComponent>
         </FormSubmittedSection>
       ) : (
@@ -1334,5 +1340,32 @@ const WelcomeMessage = styled.h1`
 
   @media (min-width: 768px) {
     font-size: 3rem;
+  }
+`;
+
+const WelcomeMessageDetails = styled.div`
+  margin-top: 20px;
+  margin-left: 71px;
+  margin-right: 71px;
+  max-width: 30rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  line-height: 1.625;
+  text-align: center;
+
+  span {
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 550;
+    line-height: 2rem;
+    font-style: italic;
+    letter-spacing: -0.025em;
+    margin: 0px auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 `;
