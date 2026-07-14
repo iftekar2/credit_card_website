@@ -5,6 +5,7 @@ import businessIcon from "./image/icons8-small-business-50.png";
 import checkIcon from "./image/icons8-correct-50.png";
 import nextPageArrow from "./image/icons8-up-right-50.png";
 import starIcon from "./image/icons8-star-30.png";
+import checkMarkIcon from "./image/icons8-check-mark-100.png";
 import React, { useState } from "react";
 import { supabase } from "./supabaseClient";
 
@@ -252,12 +253,53 @@ function App() {
         </ExampleCards>
       </CollectionSection>
 
-      <SignupSection>
-        <SignupComponent>
-          {statusMessage ? (
-            <FormMessage>{statusMessage}</FormMessage>
-          ) : (
-            <>
+      {statusMessage ? (
+        <FormSubmittedSection>
+          <FormSubmittedComponent>
+            <CheckMark>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-check-icon lucide-check"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </CheckMark>
+
+            <HeaderBadge>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
+                />
+              </svg>
+              Your're in
+            </HeaderBadge>
+
+            <WelcomeMessage>
+              Welcome to <span>Swiply</span>
+            </WelcomeMessage>
+          </FormSubmittedComponent>
+        </FormSubmittedSection>
+      ) : (
+        <>
+          <SignupSection>
+            <SignupComponent>
               <SignupHeader>
                 <TagContainer>
                   <TagTitle>NO. 0042 · Swiply CARD MATCHER</TagTitle>
@@ -404,10 +446,10 @@ function App() {
                   <span>2,400+ on the list</span>
                 </SignupFormFooterContainer>
               </FormContainer>
-            </>
-          )}
-        </SignupComponent>
-      </SignupSection>
+            </SignupComponent>
+          </SignupSection>
+        </>
+      )}
 
       <FooterSection>
         <FooterTitleContainer>
@@ -425,17 +467,6 @@ function App() {
 }
 
 export default App;
-
-const FormMessage = styled.p`
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #111827;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 const Main = styled.main`
   position: relative;
@@ -1207,16 +1238,101 @@ const FooterTitle = styled.p`
   margin: 0;
 `;
 
-// const PagesContainer = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
+const FormSubmittedSection = styled.div`
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  scroll-margin-top: 6rem;
+`;
 
-// const Pages = styled.div`
-//   font-family:
-//     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-//   font-size: 14px;
-//   color: black;
-//   text-align: center;
-// `;
+const FormSubmittedComponent = styled.div`
+  overflow: hidden;
+  position: relative;
+  border-radius: 1.5rem;
+  border-width: 1px;
+  border: 1px solid #d7d0c7;
+  position: relative;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+`;
+
+const CheckMark = styled.div`
+  height: 80px;
+  width: 80px;
+  background: #115631;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    height: 50px;
+    width: 50px;
+    color: white;
+  }
+`;
+
+const HeaderBadge = styled.div`
+  margin-top: 20px;
+  display: inline-flex;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-bottom: 0.75rem;
+  gap: 0.5rem;
+  align-items: center;
+  border: 1px solid #d1cac1;
+  border-radius: 9999px;
+  border-width: 1px;
+  font-family:
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 10px;
+
+  svg {
+    height: 20px;
+    width: 20px;
+    color: #115631;
+  }
+`;
+
+const WelcomeMessage = styled.h1`
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #09090b;
+  margin: 0;
+  font-size: 3rem;
+
+  span {
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 2.5rem;
+    font-weight: 550;
+    line-height: 2rem;
+    font-style: italic;
+    letter-spacing: -0.025em;
+    margin: 0px auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+`;
