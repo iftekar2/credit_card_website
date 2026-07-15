@@ -5,13 +5,25 @@ import businessIcon from "./image/icons8-small-business-50.png";
 import checkIcon from "./image/icons8-correct-50.png";
 import nextPageArrow from "./image/icons8-up-right-50.png";
 import starIcon from "./image/icons8-star-30.png";
-import checkMarkIcon from "./image/icons8-check-mark-100.png";
 import React, { useState } from "react";
 import { supabase } from "./supabaseClient";
 
 function App() {
   const [email, setEmail] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
+  const [userPosition, setUserPosition] = useState(null);
+
+  const fetchCurrentPosition = async () => {
+    const { count, error } = await supabase
+      .from("waitlist")
+      .select("id", { count: "exact" });
+
+    if (error) {
+      throw error;
+    }
+
+    return count;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,6 +47,8 @@ function App() {
       }
 
       if (existingUsers && existingUsers.length > 0) {
+        const position = await fetchCurrentPosition();
+        setUserPosition(position);
         setStatusMessage("You’re already on the waitlist!");
         setEmail("");
         return;
@@ -48,6 +62,8 @@ function App() {
         throw insertError;
       }
 
+      const position = await fetchCurrentPosition();
+      setUserPosition(position);
       setStatusMessage("You’re on the waitlist!");
       setEmail("");
     } catch (error) {
@@ -61,7 +77,6 @@ function App() {
       <SiteHeader className="App-header">
         <Logo>Swiply</Logo>
       </SiteHeader>
-
       <MainSection>
         <HeroTitle>
           Swiply helps you find the <br />
@@ -83,7 +98,6 @@ function App() {
           Building your card matcher · 2,400+ on the list
         </SocialProofText>
       </MainSection>
-
       <FeaturesSection>
         <BenefitCards>
           <CardForStudent>
@@ -131,7 +145,6 @@ function App() {
           </ValueItem>
         </ValuePropsBanner>
       </FeaturesSection>
-
       <CollectionSection>
         <SectionHeader>
           <CategoryTag>The Swiply Collection</CategoryTag>
@@ -264,10 +277,10 @@ function App() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-check-icon lucide-check"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-check-icon lucide-check"
               >
                 <path d="M20 6 9 17l-5-5" />
               </svg>
@@ -278,17 +291,17 @@ function App() {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
-                class="size-6"
+                className="size-6"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
                 />
               </svg>
-              Your're in
+              You're in
             </HeaderBadge>
 
             <WelcomeMessage>
@@ -300,173 +313,160 @@ function App() {
               the <span>Swiply</span> as soon as it comes out. Keep an eye on
               your email.
             </WelcomeMessageDetails>
+
+            <FoundingComponent>
+              <Position>
+                <PositionTitle>Position</PositionTitle>
+                <PositionDescription>
+                  #{userPosition !== null ? userPosition : "Loading..."}
+                </PositionDescription>
+              </Position>
+            </FoundingComponent>
           </FormSubmittedComponent>
         </FormSubmittedSection>
       ) : (
-        <>
-          <SignupSection>
-            <SignupComponent>
-              <SignupHeader>
-                <TagContainer>
-                  <TagTitle>NO. 0042 · Swiply CARD MATCHER</TagTitle>
-                  <BarcodeContainer>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 0 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 0 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 0 }}></span>
-                    <span style={{ opacity: 0 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 0 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 0 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 0 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 0 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 0 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 0 }}></span>
-                    <span style={{ opacity: 0 }}></span>
-                    <span style={{ opacity: 1 }}></span>
-                    <span style={{ opacity: 0 }}></span>
-                  </BarcodeContainer>
-                </TagContainer>
+        <SignupSection>
+          <SignupComponent>
+            <SignupHeader>
+              <TagContainer>
+                <TagTitle>NO. 0042 · Swiply CARD MATCHER</TagTitle>
+                <BarcodeContainer>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 0 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 0 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 0 }}></span>
+                  <span style={{ opacity: 0 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 0 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 0 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 0 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 0 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 0 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 0 }}></span>
+                  <span style={{ opacity: 0 }}></span>
+                  <span style={{ opacity: 1 }}></span>
+                  <span style={{ opacity: 0 }}></span>
+                </BarcodeContainer>
+              </TagContainer>
 
-                <EarlyAccessBadge>
-                  <SmallLabel>Early access</SmallLabel>
-                  <SubtitleText>Founding member</SubtitleText>
+              <EarlyAccessBadge>
+                <SmallLabel>Early access</SmallLabel>
+                <SubtitleText>Founding member</SubtitleText>
 
-                  <StarContainer>
-                    <Star>
+                <StarContainer>
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i}>
                       <img src={starIcon} alt="Star" />
                     </Star>
-                    <Star>
-                      <img src={starIcon} alt="Star" />
-                    </Star>
-                    <Star>
-                      <img src={starIcon} alt="Star" />
-                    </Star>
-                    <Star>
-                      <img src={starIcon} alt="Star" />
-                    </Star>
-                    <Star>
-                      <img src={starIcon} alt="Star" />
-                    </Star>
-                  </StarContainer>
+                  ))}
+                </StarContainer>
 
-                  <SmallLabel style={{ marginTop: "4px" }}>
-                    No annual fee · Est. 2026
-                  </SmallLabel>
-                </EarlyAccessBadge>
-              </SignupHeader>
+                <SmallLabel style={{ marginTop: "4px" }}>
+                  No annual fee · Est. 2026
+                </SmallLabel>
+              </EarlyAccessBadge>
+            </SignupHeader>
 
-              <SignupBody>
-                <SectionSeparator>✦</SectionSeparator>
+            <SignupBody>
+              <SectionSeparator>✦</SectionSeparator>
+              <SignupBodyTitle>
+                Join our <em>waitlist</em>
+              </SignupBodyTitle>
+              <SignupBodyDescription>
+                Get early access to the credit card matcher built for students,
+                credit builders, and business owners. First 500 members get a
+                founding perk.
+              </SignupBodyDescription>
+            </SignupBody>
 
-                <SignupBodyTitle>
-                  Join our <em>waitlist</em>
-                </SignupBodyTitle>
+            <FormContainer onSubmit={handleSubmit}>
+              <FormLabel htmlFor="waitlist-email">Email address</FormLabel>
+              <InputWrapper>
+                <StyledInput
+                  id="waitlist-email"
+                  type="email"
+                  required
+                  placeholder="example@gmail.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <SubmitButton type="submit">
+                  Get early access
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </SubmitButton>
+              </InputWrapper>
 
-                <SignupBodyDescription>
-                  Get early access to the credit card matcher built for
-                  students, credit builders, and business owners. First 500
-                  members get a founding perk.
-                </SignupBodyDescription>
-              </SignupBody>
-
-              <FormContainer onSubmit={handleSubmit}>
-                <FormLabel htmlFor="waitlist-email">Email address</FormLabel>
-
-                <InputWrapper>
-                  <StyledInput
-                    id="waitlist-email"
-                    type="email"
-                    required
-                    placeholder="example@gmail.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-
-                  <SubmitButton type="submit">
-                    Get early access
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                    >
-                      <path d="M5 12h14"></path>
-                      <path d="m12 5 7 7-7 7"></path>
-                    </svg>
-                  </SubmitButton>
-                </InputWrapper>
-
-                <SignupFormFooterContainer>
-                  <FooterBadge>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                    >
-                      <path d="M20 6 9 17l-5-5"></path>
-                    </svg>
-                    No spam
-                  </FooterBadge>
-                  <span>·</span>
-                  <FooterBadge>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                    >
-                      <path d="M20 6 9 17l-5-5"></path>
-                    </svg>
-                    Unsubscribe anytime
-                  </FooterBadge>
-                  <span>·</span>
-                  <span>2,400+ on the list</span>
-                </SignupFormFooterContainer>
-              </FormContainer>
-            </SignupComponent>
-          </SignupSection>
-        </>
+              <SignupFormFooterContainer>
+                <FooterBadge>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                  No spam
+                </FooterBadge>
+                <span>·</span>
+                <FooterBadge>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>
+                  Unsubscribe anytime
+                </FooterBadge>
+                <span>·</span>
+                <span>2,400+ on the list</span>
+              </SignupFormFooterContainer>
+            </FormContainer>
+          </SignupComponent>
+        </SignupSection>
       )}
 
       <FooterSection>
         <FooterTitleContainer>
           <FooterTitle>© 2026 all rights reserved.</FooterTitle>
         </FooterTitleContainer>
-
-        {/* <PagesContainer>
-          <Pages>Pages</Pages>
-        </PagesContainer>
-
-        <div aria-hidden="true" /> */}
       </FooterSection>
     </Main>
   );
@@ -954,10 +954,15 @@ const CardQualification = styled.ul`
   }
 `;
 
-const SignupSection = styled.section`
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-  scroll-margin-top: 6rem;
+const SignupSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
 `;
 
 const SignupComponent = styled.div`
@@ -1223,15 +1228,13 @@ const FooterBadge = styled.span`
 `;
 
 const FooterSection = styled.div`
-  padding-top: 2rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 2rem 1.5rem;
   border-top: 1px solid #d7d0c7;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 const FooterTitleContainer = styled.div``;
@@ -1256,34 +1259,27 @@ const FormSubmittedSection = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 56rem;
-  min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  box-sizing: border-box;
 `;
 
 const FormSubmittedComponent = styled.div`
   overflow: hidden;
-  position: relative;
   border-radius: 1.5rem;
-  border-width: 1px;
   border: 1px solid #d7d0c7;
-  position: relative;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding: 3rem 1.5rem; /* Safe padding cushions for mobile layout */
   background: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 38rem; /* Sets a clean dashboard boundary on big screens */
+  box-sizing: border-box;
 
   @media (min-width: 768px) {
-    padding-left: 3rem;
-    padding-right: 3rem;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding: 4rem 3rem;
   }
 `;
 
@@ -1295,36 +1291,34 @@ const CheckMark = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0; /* Prevents circle deformation on tiny screen compressions */
 
   svg {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     color: white;
   }
 `;
 
 const HeaderBadge = styled.div`
-  margin-top: 20px;
-  display: inline-flex;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  margin-top: 1.5rem;
   margin-bottom: 0.75rem;
+  display: inline-flex;
+  padding: 0.375rem 0.75rem;
   gap: 0.5rem;
   align-items: center;
   border: 1px solid #d1cac1;
   border-radius: 9999px;
-  border-width: 1px;
   font-family:
     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-size: 10px;
+  color: #09090b;
 
   svg {
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
     color: #115631;
   }
 `;
@@ -1332,52 +1326,76 @@ const HeaderBadge = styled.div`
 const WelcomeMessage = styled.h1`
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: #09090b;
   margin: 0;
-  font-size: 3rem;
+  text-align: center;
+  font-size: 2.25rem; /* Clean size layout for standard mobile views */
 
+  /* Fix: Clean text hierarchy styling for the brand word */
   span {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    font-size: 2.5rem;
-    font-weight: 550;
-    line-height: 2rem;
     font-style: italic;
-    letter-spacing: -0.025em;
-    margin: 0px auto;
-    width: 100%;
-    text-align: center;
+    font-weight: 600;
+    color: #115631; /* Subtle matching brand accent pop color */
   }
 
   @media (min-width: 768px) {
-    font-size: 3rem;
+    font-size: 3rem; /* Scales up cleanly on desktop monitors */
   }
 `;
 
-const WelcomeMessageDetails = styled.div`
-  margin-top: 20px;
-  margin-left: 71px;
-  margin-right: 71px;
-  max-width: 30rem;
+const WelcomeMessageDetails = styled.p`
+  margin-top: 1.25rem;
+  margin-left: 0; /* Fix: Cleared hard margins breaking responsiveness */
+  margin-right: 0; /* Fix: Cleared hard margins breaking responsiveness */
+  width: 100%;
+  max-width: 28rem; /* Confines paragraphs safely for ultimate readability metrics */
   font-size: 0.875rem;
-  line-height: 1.25rem;
-  line-height: 1.625;
+  line-height: 1.6;
+  color: #4b5563; /* Softer readable text shade layout */
   text-align: center;
+  margin-bottom: 0;
 
   span {
-    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    font-weight: 550;
-    line-height: 2rem;
     font-style: italic;
-    letter-spacing: -0.025em;
-    margin: 0px auto;
-    width: 100%;
-    text-align: center;
+    font-weight: 500;
   }
 
   @media (min-width: 768px) {
     font-size: 1rem;
-    line-height: 1.5rem;
+    line-height: 1.625;
   }
+`;
+
+const FoundingComponent = styled.div`
+  margin-top: 2.5rem;
+  width: 100%;
+  max-width: 16rem; /* Keeps badge asset centered and cleanly balanced */
+`;
+
+const Position = styled.div`
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #d7d0c7;
+  background: #f8f3eb;
+  text-align: center;
+`;
+
+const PositionTitle = styled.div`
+  font-family:
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #5b534f;
+`;
+
+const PositionDescription = styled.div`
+  margin-top: 0.25rem;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #115631;
 `;
