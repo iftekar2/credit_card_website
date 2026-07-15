@@ -90,7 +90,7 @@ function App() {
         </HeroDescription>
 
         <ButtonGroup>
-          <PrimaryButton>Join the Waitlist</PrimaryButton>
+          <PrimaryButton href="#waitlist">Join the Waitlist</PrimaryButton>
           <SecondaryButton>See the Cards</SecondaryButton>
         </ButtonGroup>
 
@@ -334,7 +334,7 @@ function App() {
           </FormSubmittedComponent>
         </FormSubmittedSection>
       ) : (
-        <SignupSection>
+        <SignupSection id="waitlist">
           <SignupComponent>
             <SignupHeader>
               <TagContainer>
@@ -620,6 +620,8 @@ const PrimaryButton = styled.a`
   transition-duration: 300ms;
   background-color: black;
   color: white;
+  text-decoration: none;
+  cursor: pointer;
 `;
 
 const SecondaryButton = styled.a`
@@ -962,16 +964,10 @@ const CardQualification = styled.ul`
   }
 `;
 
-const SignupSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  width: 100%;
-  box-sizing: border-box;
-  flex-grow: 1;
+const SignupSection = styled.section`
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  scroll-margin-top: 6rem;
 `;
 
 const SignupComponent = styled.div`
