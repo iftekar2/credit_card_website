@@ -1269,13 +1269,13 @@ const FormSubmittedComponent = styled.div`
   overflow: hidden;
   border-radius: 1.5rem;
   border: 1px solid #d7d0c7;
-  padding: 3rem 1.5rem; /* Safe padding cushions for mobile layout */
+  padding: 3rem 1.5rem;
   background: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 38rem; /* Sets a clean dashboard boundary on big screens */
+  max-width: 38rem;
   box-sizing: border-box;
 
   @media (min-width: 768px) {
@@ -1291,7 +1291,7 @@ const CheckMark = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0; /* Prevents circle deformation on tiny screen compressions */
+  flex-shrink: 0;
 
   svg {
     height: 40px;
@@ -1331,29 +1331,28 @@ const WelcomeMessage = styled.h1`
   color: #09090b;
   margin: 0;
   text-align: center;
-  font-size: 2.25rem; /* Clean size layout for standard mobile views */
+  font-size: 2.25rem;
 
-  /* Fix: Clean text hierarchy styling for the brand word */
   span {
     font-style: italic;
     font-weight: 600;
-    color: #115631; /* Subtle matching brand accent pop color */
+    color: #115631;
   }
 
   @media (min-width: 768px) {
-    font-size: 3rem; /* Scales up cleanly on desktop monitors */
+    font-size: 3rem;
   }
 `;
 
 const WelcomeMessageDetails = styled.p`
   margin-top: 1.25rem;
-  margin-left: 0; /* Fix: Cleared hard margins breaking responsiveness */
-  margin-right: 0; /* Fix: Cleared hard margins breaking responsiveness */
+  margin-left: 0;
+  margin-right: 0;
   width: 100%;
-  max-width: 28rem; /* Confines paragraphs safely for ultimate readability metrics */
+  max-width: 28rem;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: #4b5563; /* Softer readable text shade layout */
+  color: #4b5563;
   text-align: center;
   margin-bottom: 0;
 
@@ -1371,7 +1370,7 @@ const WelcomeMessageDetails = styled.p`
 const FoundingComponent = styled.div`
   margin-top: 2.5rem;
   width: 100%;
-  max-width: 16rem; /* Keeps badge asset centered and cleanly balanced */
+  max-width: 16rem;
 `;
 
 const Position = styled.div`
