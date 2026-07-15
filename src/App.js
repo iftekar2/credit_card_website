@@ -310,18 +310,27 @@ function App() {
 
             <WelcomeMessageDetails>
               We saved your spot. You are on top of the list to get access to
-              the <span>Swiply</span> as soon as it comes out. Keep an eye on
-              your email.
+              the <span>Swiply</span> as soon as it comes out.
             </WelcomeMessageDetails>
 
-            <FoundingComponent>
-              <Position>
-                <PositionTitle>Position</PositionTitle>
-                <PositionDescription>
-                  #{userPosition !== null ? userPosition : "Loading..."}
-                </PositionDescription>
-              </Position>
-            </FoundingComponent>
+            <StatsGridContainer>
+              <StatCard>
+                <StatLabel>Position</StatLabel>
+                <StatValue>
+                  #{userPosition != null ? userPosition : "Loading..."}
+                </StatValue>
+              </StatCard>
+
+              <StatCard>
+                <StatLabel>Perk Tier</StatLabel>
+                <StatValue>Founding</StatValue>
+              </StatCard>
+
+              <StatCard>
+                <StatLabel>Launch</StatLabel>
+                <StatValue>Spring '26</StatValue>
+              </StatCard>
+            </StatsGridContainer>
           </FormSubmittedComponent>
         </FormSubmittedSection>
       ) : (
@@ -478,7 +487,6 @@ const Main = styled.main`
   position: relative;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  padding-bottom: 1.5rem;
   max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
@@ -959,7 +967,8 @@ const SignupSection = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 4rem 1rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   width: 100%;
   box-sizing: border-box;
   flex-grow: 1;
@@ -1251,8 +1260,6 @@ const FormSubmittedSection = styled.div`
   display: flex;
   position: relative;
   z-index: 10;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
   padding-top: 4rem;
   padding-bottom: 4rem;
   flex-direction: column;
@@ -1336,7 +1343,6 @@ const WelcomeMessage = styled.h1`
   span {
     font-style: italic;
     font-weight: 600;
-    color: #115631;
   }
 
   @media (min-width: 768px) {
@@ -1367,34 +1373,46 @@ const WelcomeMessageDetails = styled.p`
   }
 `;
 
-const FoundingComponent = styled.div`
+const StatsGridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
   margin-top: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
-  max-width: 16rem;
+  max-width: 28rem;
+  box-sizing: border-box;
 `;
 
-const Position = styled.div`
-  padding: 1rem;
-  border-radius: 0.75rem;
+const StatCard = styled.div`
+  border-radius: 15px;
   border: 1px solid #d7d0c7;
-  background: #f8f3eb;
+  background-color: #fcfbf9;
+  padding: 0.75rem 2px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StatLabel = styled.div`
+  font-family:
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #5b534f;
+  line-height: 1;
   text-align: center;
 `;
 
-const PositionTitle = styled.div`
-  font-family:
-    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-size: 10px;
-  color: #5b534f;
-`;
-
-const PositionDescription = styled.div`
-  margin-top: 0.25rem;
+const StatValue = styled.div`
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1.2;
-  color: #115631;
+  line-height: 1.25;
+  margin-top: 6px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: clamp(12px, 3.5vw, 1.125rem);
 `;
