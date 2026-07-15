@@ -1245,9 +1245,21 @@ const FooterTitle = styled.p`
 `;
 
 const FormSubmittedSection = styled.div`
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-  scroll-margin-top: 6rem;
+  display: flex;
+  position: relative;
+  z-index: 10;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 56rem;
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 `;
 
 const FormSubmittedComponent = styled.div`
