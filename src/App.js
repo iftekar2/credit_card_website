@@ -11,6 +11,7 @@ import { supabase } from "./supabaseClient";
 function App() {
   const [email, setEmail] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
+  const [submissionState, setSubmissionState] = useState("idle");
   const [userPosition, setUserPosition] = useState(null);
 
   const fetchCurrentPosition = async () => {
@@ -30,8 +31,14 @@ function App() {
 
     const trimmedEmail = email.trim();
 
+    setStatusMessage("");
+    setSubmissionState("idle");
+
     if (!supabase) {
-      setStatusMessage("Waitlist is not configured yet.");
+      setSubmissionState("error");
+      setStatusMessage(
+        "Looks like something went wrong. Please try again later.",
+      );
       return;
     }
 
@@ -49,6 +56,7 @@ function App() {
       if (existingUsers && existingUsers.length > 0) {
         const position = await fetchCurrentPosition();
         setUserPosition(position);
+        setSubmissionState("success");
         setStatusMessage("You’re already on the waitlist!");
         setEmail("");
         return;
@@ -64,10 +72,12 @@ function App() {
 
       const position = await fetchCurrentPosition();
       setUserPosition(position);
+      setSubmissionState("success");
       setStatusMessage("You’re on the waitlist!");
       setEmail("");
     } catch (error) {
       console.error("Error saving email:", error);
+      setSubmissionState("error");
       setStatusMessage("Something went wrong. Please try again.");
     }
   };
@@ -266,7 +276,7 @@ function App() {
         </ExampleCards>
       </CollectionSection>
 
-      {statusMessage ? (
+      {submissionState === "success" ? (
         <FormSubmittedSection>
           <FormSubmittedComponent>
             <CheckMark>
@@ -431,6 +441,10 @@ function App() {
                   </svg>
                 </SubmitButton>
               </InputWrapper>
+
+              {statusMessage && submissionState === "error" && (
+                <StatusMessage role="alert">{statusMessage}</StatusMessage>
+              )}
 
               <SignupFormFooterContainer>
                 <FooterBadge>
@@ -1230,6 +1244,16 @@ const FooterBadge = styled.span`
     height: 12px;
     color: #10b981;
   }
+`;
+
+const StatusMessage = styled.p`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #b91c1c;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
 `;
 
 const FooterSection = styled.div`
