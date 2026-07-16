@@ -7,6 +7,10 @@ import nextPageArrow from "./image/icons8-up-right-50.png";
 import starIcon from "./image/icons8-star-30.png";
 import React, { useState } from "react";
 import { supabase } from "./supabaseClient";
+import {
+  MAX_WAITLIST_EMAIL_LENGTH,
+  validateWaitlistEmail,
+} from "./waitlistValidation";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -29,10 +33,18 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const trimmedEmail = email.trim();
+    const validation = validateWaitlistEmail(email);
 
     setStatusMessage("");
     setSubmissionState("idle");
+
+    if (!validation.isValid) {
+      setSubmissionState("error");
+      setStatusMessage(validation.message);
+      return;
+    }
+
+    const normalizedEmail = validation.normalizedValue;
 
     if (!supabase) {
       setSubmissionState("error");
@@ -46,7 +58,7 @@ function App() {
       const { data: existingUsers, error: selectError } = await supabase
         .from("waitlist")
         .select("email")
-        .ilike("email", trimmedEmail)
+        .ilike("email", normalizedEmail)
         .limit(1);
 
       if (selectError) {
@@ -64,7 +76,7 @@ function App() {
 
       const { error: insertError } = await supabase
         .from("waitlist")
-        .insert([{ email: trimmedEmail }]);
+        .insert([{ email: normalizedEmail }]);
 
       if (insertError) {
         throw insertError;
@@ -76,6 +88,20 @@ function App() {
       setStatusMessage("You’re on the waitlist!");
       setEmail("");
     } catch (error) {
+      if (error?.code === "23505") {
+        try {
+          const position = await fetchCurrentPosition();
+          setUserPosition(position);
+        } catch (positionError) {
+          console.error("Error fetching waitlist position:", positionError);
+        }
+
+        setSubmissionState("success");
+        setStatusMessage("You’re already on the waitlist!");
+        setEmail("");
+        return;
+      }
+
       console.error("Error saving email:", error);
       setSubmissionState("error");
       setStatusMessage("Something went wrong. Please try again.");
@@ -420,6 +446,9 @@ function App() {
                   id="waitlist-email"
                   type="email"
                   required
+                  maxLength={MAX_WAITLIST_EMAIL_LENGTH}
+                  autoCapitalize="none"
+                  autoComplete="email"
                   placeholder="example@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
