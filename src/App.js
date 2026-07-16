@@ -101,7 +101,7 @@ function App() {
 
         <ButtonGroup>
           <PrimaryButton href="#waitlist">Join the Waitlist</PrimaryButton>
-          <SecondaryButton>See the Cards</SecondaryButton>
+          <SecondaryButton href="#cards">See the Cards</SecondaryButton>
         </ButtonGroup>
 
         <SocialProofText>
@@ -157,7 +157,7 @@ function App() {
       </FeaturesSection>
       <CollectionSection>
         <SectionHeader>
-          <CategoryTag>The Swiply Collection</CategoryTag>
+          <CategoryTag id="cards">The Swiply Collection</CategoryTag>
           <SectionTitle>
             Every category, one <span>honest</span> comparison.
           </SectionTitle>
@@ -658,6 +658,7 @@ const SecondaryButton = styled.a`
   background-color: white;
   color: black;
   border: 1px solid #bebebe;
+  text-decoration: none;
 `;
 
 const SocialProofText = styled.p`
