@@ -183,7 +183,7 @@ function App() {
       </FeaturesSection>
       <CollectionSection>
         <SectionHeader>
-          <CategoryTag id="cards">The Swiply Collection</CategoryTag>
+          {/* <CategoryTag id="cards">The Swiply Collection</CategoryTag> */}
           <SectionTitle>
             Every category, one <span>honest</span> comparison.
           </SectionTitle>
@@ -322,7 +322,7 @@ function App() {
               </svg>
             </CheckMark>
 
-            <HeaderBadge>
+            {/* <HeaderBadge>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -338,7 +338,7 @@ function App() {
                 />
               </svg>
               You're in
-            </HeaderBadge>
+            </HeaderBadge> */}
 
             <WelcomeMessage>
               Welcome to <span>Swiply</span>
@@ -838,24 +838,24 @@ const SectionHeader = styled.div`
   align-items: center;
 `;
 
-const CategoryTag = styled.div`
-  display: inline-flex;
-  padding: 0.25rem 0.75rem;
-  margin-bottom: 1rem;
-  gap: 0.5rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  font-family:
-    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  background-color: white;
-  font-size: 10px;
-  border: 1px solid #d7d0c7;
-  color: #5b534f;
-  height: 15px;
-`;
+// const CategoryTag = styled.div`
+//   display: inline-flex;
+//   padding: 0.25rem 0.75rem;
+//   margin-bottom: 1rem;
+//   gap: 0.5rem;
+//   align-items: center;
+//   justify-content: center;
+//   border-radius: 9999px;
+//   font-family:
+//     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+//   letter-spacing: 0.1em;
+//   text-transform: uppercase;
+//   background-color: white;
+//   font-size: 10px;
+//   border: 1px solid #d7d0c7;
+//   color: #5b534f;
+//   height: 15px;
+// `;
 
 const SectionTitle = styled.h2`
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
@@ -1357,28 +1357,28 @@ const CheckMark = styled.div`
   }
 `;
 
-const HeaderBadge = styled.div`
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  display: inline-flex;
-  padding: 0.375rem 0.75rem;
-  gap: 0.5rem;
-  align-items: center;
-  border: 1px solid #d1cac1;
-  border-radius: 9999px;
-  font-family:
-    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-size: 10px;
-  color: #09090b;
+// const HeaderBadge = styled.div`
+//   margin-top: 1.5rem;
+//   margin-bottom: 0.75rem;
+//   display: inline-flex;
+//   padding: 0.375rem 0.75rem;
+//   gap: 0.5rem;
+//   align-items: center;
+//   border: 1px solid #d1cac1;
+//   border-radius: 9999px;
+//   font-family:
+//     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+//   letter-spacing: 0.1em;
+//   text-transform: uppercase;
+//   font-size: 10px;
+//   color: #09090b;
 
-  svg {
-    height: 16px;
-    width: 16px;
-    color: #115631;
-  }
-`;
+//   svg {
+//     height: 16px;
+//     width: 16px;
+//     color: #115631;
+//   }
+// `;
 
 const WelcomeMessage = styled.h1`
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
@@ -1386,7 +1386,8 @@ const WelcomeMessage = styled.h1`
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: #09090b;
-  margin: 0;
+  margin-top: 1rem;
+  margin-bottom: 0;
   text-align: center;
   font-size: 2.25rem;
 
