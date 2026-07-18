@@ -1232,6 +1232,8 @@ const SubmitButton = styled.button`
   inline-flex: true;
   display: flex;
   align-items: center;
+  justify-content: center;
+  align-items: center;
   background-color: #09090b;
   font-size: 16px;
   text-transform: uppercase;
@@ -1239,6 +1241,7 @@ const SubmitButton = styled.button`
   border: none;
   cursor: pointer;
   touch-action: manipulation;
+  width: 100px;
 
   @media (min-width: 768px) {
     font-size: 0.75rem;
