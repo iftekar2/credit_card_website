@@ -1208,10 +1208,18 @@ const StyledInput = styled.input`
   flex: 1;
   background-color: transparent;
   padding: 0.75rem 1.25rem;
-  font-size: 0.875rem;
+  font-size: 16px;
+  line-height: 1.4;
   border: none;
   outline: none;
   color: #09090b;
+  -webkit-text-size-adjust: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+
+  @media (min-width: 768px) {
+    font-size: 0.875rem;
+  }
 
   &::placeholder {
     color: #a1a1aa;
@@ -1225,14 +1233,19 @@ const SubmitButton = styled.button`
   gap: 0.375rem;
   background-color: #09090b;
   padding: 0.75rem 1.25rem;
-  font-size: 0.75rem;
+  font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #ffffff;
   border: none;
   cursor: pointer;
+  touch-action: manipulation;
   transition: opacity 0.2s ease-in-out;
+
+  @media (min-width: 768px) {
+    font-size: 0.75rem;
+  }
 
   &:hover {
     opacity: 0.9;
