@@ -1207,7 +1207,7 @@ const InputWrapper = styled.div`
 const StyledInput = styled.input`
   flex: 1;
   background-color: transparent;
-  padding-right: 15px;
+  padding-left: 15px;
   padding-top: 12px;
   padding-bottom: 12px;
   font-size: 16px;
