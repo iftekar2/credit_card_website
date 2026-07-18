@@ -455,7 +455,7 @@ function App() {
                 />
                 <SubmitButton type="submit">
                   Register
-                  <svg
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="none"
@@ -467,7 +467,7 @@ function App() {
                   >
                     <path d="M5 12h14"></path>
                     <path d="m12 5 7 7-7 7"></path>
-                  </svg>
+                  </svg> */}
                 </SubmitButton>
               </InputWrapper>
 
@@ -1207,7 +1207,9 @@ const InputWrapper = styled.div`
 const StyledInput = styled.input`
   flex: 1;
   background-color: transparent;
-  padding: 0.75rem 1.25rem;
+  padding-right: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   font-size: 16px;
   line-height: 1.4;
   border: none;
@@ -1230,18 +1232,13 @@ const SubmitButton = styled.button`
   inline-flex: true;
   display: flex;
   align-items: center;
-  gap: 0.375rem;
   background-color: #09090b;
-  padding: 0.75rem 1.25rem;
   font-size: 16px;
-  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
   color: #ffffff;
   border: none;
   cursor: pointer;
   touch-action: manipulation;
-  transition: opacity 0.2s ease-in-out;
 
   @media (min-width: 768px) {
     font-size: 0.75rem;
@@ -1249,11 +1246,6 @@ const SubmitButton = styled.button`
 
   &:hover {
     opacity: 0.9;
-  }
-
-  svg {
-    width: 14px;
-    height: 14px;
   }
 `;
 
